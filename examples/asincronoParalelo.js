@@ -10,10 +10,11 @@ function esribeTras2Segundos(texto, callback) {
   }, 2000);
 }
 
-esribeTras2Segundos("texto1", sigue);
+// Si usmos un for, while, etc. ejecutamos todas las iteraziones en paralelo
+// porque cada vuelta no espera a la anterior
 
-function sigue() {
-  esribeTras2Segundos("texto2", function() {
-    console.log("termino");
+for (let n = 0; n < 5; n++) {
+  esribeTras2Segundos("texto", function() {
+    console.log("termino" + n);
   });
 }
