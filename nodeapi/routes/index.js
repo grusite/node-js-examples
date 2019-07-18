@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
+// object destructuring
+const { query, validationResult } = require("express-validator");
+
 /* GET home page. */
 router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
@@ -28,19 +31,29 @@ router.get(
   }
 );
 
-router.get("/enquerystring", (req, res, next) => {
-  console.log("req.query ", req.query);
-  res.render("index", {
-    title: "Params queries " + req.query.color + req.query.talla
-  });
-});
+router.get(
+  "/enquerystring",
+  query("color")
+    .isLowercase()
+    .withMessage("must be lower case"),
+  query("talla")
+    .isNumeric()
+    .withMessage("must be numeric"),
+  (req, res, next) => {
+    validationResult(req).throw(); // Lanza excpeciones si no valida
+    // Si llego aquí es porque los parámetos de entrada son válidos
+    console.log("req.query ", req.query);
+    res.render("index", {
+      title: "Params queries " + req.query.color + req.query.talla
+    });
+  }
+);
 
 router.post("/rutapost", (req, res, next) => {
   console.log("req.body ", req.body);
   res.render("index", {
     title: "Params queries " + req.body.color
   });
-  // res.send("OK");
 });
 
 module.exports = router;
