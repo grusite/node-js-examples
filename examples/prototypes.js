@@ -47,7 +47,7 @@ function Superheroe() {
     console.log(this.name, "vuela");
   };
 
-  this.esquvaBalas = function() {
+  this.esquivaBalas = function() {
     console.log(this.name, "esquiva balas");
   };
 }
@@ -57,5 +57,5 @@ function Superheroe() {
 
 Object.assign(Agente.prototype, new Superheroe());
 
-smith.esquvaBalas();
+smith.esquivaBalas();
 smith.vuela();
