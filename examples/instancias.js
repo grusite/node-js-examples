@@ -1,6 +1,6 @@
 "use strict";
 
-// Creamos una funció para usarla como constructor de objetos
+// Creamos una función para usarla como constructor de objetos
 
 function Fruta(nombre) {
   // this es el objeto que se está creando

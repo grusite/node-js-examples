@@ -3,7 +3,7 @@
 function Coche(ruedas) {
   this.ruedas = ruedas;
   this.cuantasRuedas = function() {
-    console.log("Tiene " + this.ruedas);
+    console.log("Tiene " + this.ruedas + " ruedas");
   };
 }
 
@@ -14,6 +14,8 @@ todoterreno.cuantasRuedas();
 
 // Aquí lo perdería porque no le pongo los parentesis
 const otraVariable = todoterreno.cuantasRuedas.bind(todoterreno);
+
+console.log(otraVariable);
 
 otraVariable();
 
