@@ -8,6 +8,4 @@ const advertisementSchema = mongoose.Schema({
   tags: [String]
 });
 
-const Ad = mongoose.model("Ad", advertisementSchema);
-
-export default Ad;
+module.exports = mongoose.model("Ad", advertisementSchema);

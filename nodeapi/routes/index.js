@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 // object destructuring
-const { query, validationResult } = require("express-validator/check");
+const { query, validationResult } = require("express-validator");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
