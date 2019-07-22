@@ -6,7 +6,23 @@ const { query, validationResult } = require("express-validator");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "Express" });
+  const seconds = new Date().getSeconds();
+
+  // si pongo app.locals las hago globales, si pongo res.locals el scope es solo para esa respuesta
+  res.locals.valor = '<script>alert("inyeccion de codigo")</script>';
+
+  res.locals.condition = {
+    seconds,
+    state: seconds % 2 === 0
+  };
+
+  res.locals.users = [
+    { name: "Smith", age: 23 },
+    { name: "Jones", age: 35 },
+    { name: "Thomas", age: 20 }
+  ];
+
+  res.render("index");
 });
 
 router.get("/paramenruta/:numero", (req, res, next) => {

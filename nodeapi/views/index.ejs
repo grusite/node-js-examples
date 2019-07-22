@@ -2,10 +2,26 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <h2>Escapar valores</h2>
+    <p><%= valor %></p>
+
+    <h2>Condicionales</h2>
+    <% if(condition.state) { %>
+    <p><%= condition.seconds %> es par</p>
+    <% } else { %>
+    <p><%= condition.seconds %> es impar</p>
+    <% } %>
+
+    <h2>Usuarios</h2>
+    <% users.forEach(user => { %>
+    <p> <% user.name %> tiene <% user.age %> </p>
+    <% }) %>
+
   </body>
 </html>

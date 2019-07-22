@@ -30,8 +30,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// todo lo que esté dentro de .locals van a ser variables de la vista
+app.locals.title = "NodeApi";
+
 /**
- * Rutas de mi aplicacion
+ * Rutas de mi aplicacion web
  */
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));

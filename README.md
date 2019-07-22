@@ -16,4 +16,8 @@ Usado para la práctica entregable de NodeJS.
 
 > express nodepop -ejs
 > npm install mongoose
+> npm install express-validator
 > npm install eslint
+
+- models -> donde guardamos los modelos de la BBDD
+- controllers -> donde guardamos los controladores de las rutas
