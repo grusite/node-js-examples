@@ -11,7 +11,8 @@ var app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set("view engine", "html");
+app.engine("html", require("ejs").__express);
 
 // Todo lo que tiene use es un middleware y se ejecutan de uno en uno
 app.use(logger("dev"));
