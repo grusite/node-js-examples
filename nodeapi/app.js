@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
  * Crear conexion a la BBDD
  */
 require("./lib/connectMongoose");
+require("./models/Agentes");
 
 app.use((req, res, next) => {
   // Una de dos cosas:
@@ -35,6 +36,11 @@ app.use((req, res, next) => {
   // next(new Error("Cosa mala"));
   next();
 });
+
+/**
+ * Rutas de mi API
+ */
+app.use("/apiv1/agentes", require("./routes/apiv1/agentes"));
 
 // todo lo que esté dentro de .locals van a ser variables de la vista
 app.locals.title = "NodeApi";
