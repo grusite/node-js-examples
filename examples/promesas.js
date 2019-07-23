@@ -1,6 +1,7 @@
 "use strict";
 
 // const fsPromise = require("fs").promises;
+
 // funcion que retorna una promesa
 function sleep(ms) {
   return new Promise((resolve, reject) => {

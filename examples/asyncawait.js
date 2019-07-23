@@ -1,26 +1,42 @@
-// const sleep(2000) = new Promise(resolve, ms )
+const fs = require("fs");
 
-// Me quedé dormido y no terminé esta parte
+// función que retorna una promesa
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const writFile = (nombreFichero, texto){
-    if (err){
-        rejects(err)
-    }
+const writeFile = (nombreFichero, contenido) =>
+  new Promise((resolve, reject) => {
+    fs.writeFile(nombreFichero, contenido, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
 
+async function main() {
+  console.log("empiezo");
+  for (let i = 0; i < 5; i++) {
+    await sleep(2000);
+    console.log("sigo");
+  }
+
+  //JSON.parse('asdas');
+
+  // try {
+  //   await writeFile('/////pepe.txt', 'hola');
+  // } catch(err) {
+  //   console.log('fallo el writeFile');
+  // }
+
+  await writeFile("pepe.txt", "hola").catch(err => {
+    console.log("fallo el writeFile");
+  });
+  console.log("sigothen");
+
+  console.log("terminado");
 }
 
-async function main(){
-    console.log("empiezo");
-    for(let i=0;i<5;i++){
-        await sleep(2000)
-        console.log("sigo")
-    }
-
-    await writeFile("pepe.txt","hola");
-
-    console.log("terminado");
-}
-
-main.catch(err => {
-    console.log("Hubo un error ", err)
-}) 
+main().catch(err => {
+  console.log("Hubo un error", err);
+});

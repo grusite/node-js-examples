@@ -21,6 +21,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+/**
+ * Crear conexion a la BBDD
+ */
+require("./lib/connectMongoose");
+
 app.use((req, res, next) => {
   // Una de dos cosas:
   //    - Responder

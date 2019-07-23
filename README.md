@@ -10,14 +10,5 @@ Usado para ilustrar los ejemplos del profesor durante las clases
 
 Usado para practicar con express, mongodb y sus configuraciones
 
-## nodepop
-
-Usado para la práctica entregable de NodeJS.
-
-> express nodepop -ejs
-> npm install mongoose
-> npm install express-validator
-> npm install eslint
-
-- models -> donde guardamos los modelos de la BBDD
-- controllers -> donde guardamos los controladores de las rutas
+- MondoDB: To start a local server execute `mongod --dbpath='/home/grusite/data/db'`
+- En la carpeta /home/grusite/mongodbBin está el mongo para poder juguetear con la BBDD `./mongo`
