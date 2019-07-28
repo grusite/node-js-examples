@@ -64,14 +64,24 @@ app.use(function(err, req, res, next) {
     // Error de validación
     err.status = 422;
     const errInfo = err.array({ onlyFirstError: true })[0];
-    err.message = `Not Valid - ${errInfo.param} ${errInfo.msg}`;
+    err.message = isAPI(req)
+      ? { message: "Nor valid", errors: err.mapped() }
+      : `Not valid - ${errInfo.param} ${errInfo.msg}`;
   }
+
+  // render the error page
+  res.status(err.status || 500);
+
+  if (isAPI(req)) {
+    res.json({ success: false, error: err.message });
+    return;
+  }
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
   res.render("error");
 });
 

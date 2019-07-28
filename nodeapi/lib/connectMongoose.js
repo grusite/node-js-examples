@@ -5,6 +5,8 @@ const debug = require("debug")("nodeapi:db");
 const mongoose = require("mongoose");
 const conn = mongoose.connection;
 
+mongoose.set("useFindAndModify", false);
+
 // gestionar eventos de conexion
 conn.on("eror", err => {
   debug("Error de conexion ", err);
