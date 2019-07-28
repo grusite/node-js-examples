@@ -85,4 +85,8 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
+function isAPI(req) {
+  return req.originalUrl.indexOf("/apiv") === 0;
+}
+
 module.exports = app;
